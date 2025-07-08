@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehículos tipo {{ vehicle_type.name }}</title>
+</head>
+<body>
+    <h1>Vehículos tipo {{ vehicle_type.name }}</h1>
+    <ul>
+        {% for vehicle in vehicles %}
+            <li>
+                <a href="{% url 'vehicles:vehicle_detail' vehicle.pk %}">
+                    {{ vehicle.brand.name }} {{ vehicle.version }} ({{ vehicle.year }})
+                </a> - {{ vehicle.kilometers }} km - ${{ vehicle.price }}
+            </li>
+        {% empty %}
+            <li>No hay vehículos de este tipo.</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'vehicles:vehicle_list' %}">Volver a todos</a></p>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{% extends "vehicles/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+  <div class="heading">
+    <div class="container">
+      <div class="row d-flex justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1>Nuestras Sucursales</h1>
+          <a href="{% url 'vehicles:home' %}" class="btn btn-info text-white fw-bold px-4 py-2 shadow-sm hover-cta">VOLVER A INICIO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li><a href="{% url 'vehicles:home' %}">Home</a></li>
+        <li class="current">Visitanos</li>
+      </ol>
+    </div>
+  </nav>
+</div>
+<!-- End Page Title -->
+
+<!-- ======= Sucursales Section ======= -->
+    <!-- Usar container-fluid si quieres que el contenido se extienda más a los bordes de la pantalla -->
+    <!-- Si usas container-fluid, y quieres que las cards no tengan espacio entre ellas, puedes añadir 'px-0' a la row y quitar padding a las cols o usar 'g-0' en la row (Bootstrap 5) -->
+  <section id="sucursales" class="sucursales-section">
+  <div class="container-fluid" data-aos="fade-up">
+    <div class="text-center">
+      <div class="section-separator"></div>
+      <p class="sucursales-subtitle">Encuéntranos en Resistencia, Chaco. Estamos listos para atenderte.</p>
+    </div>
+
+          
+  <div class="row justify-content-center gx-4"> <!-- gx-4 para separar las columnas -->
+        <!-- Sucursal 1 -->
+        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+          <div class="card sucursal-card text-center w-100">
+            <div class="card-body">
+              <h5 class="card-title">Sucursal Shopping Sarmiento</h5>
+              <p class="card-text bi bi-geo-alt-fill">
+                Shopping Sarmiento<br>
+              </p>
+              <div class="map-container">
+                <iframe
+                  src="https://maps.google.com/maps?q=shopping+sarmiento&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Mapa de Sucursal: Shopping Sarmiento">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sucursal 2 -->
+        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+          <div class="card sucursal-card text-center w-100">
+            <div class="card-body">
+              <h5 class="card-title">Sucursal Cangallo 530</h5>
+              <p class="card-text bi bi-geo-alt-fill">
+                Cangallo 530<br>
+                <!-- Puedes añadir aquí la ciudad/provincia si es necesario -->
+              </p>
+              <div class="map-container">
+                <iframe
+                  src="https://maps.google.com/maps?q=cangallo+530&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Mapa de Sucursal: Cangallo 530">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sucursal 3 -->
+        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+          <div class="card sucursal-card text-center w-100">
+            <div class="card-body">
+              <h5 class="card-title">Sucursal Hernandarias 1300</h5>
+              <p class="card-text bi bi-geo-alt-fill">
+                Hernandarias 1300<br>
+                <!-- Puedes añadir aquí la ciudad/provincia si es necesario -->
+              </p>
+              <div class="map-container">
+                <iframe
+                  src="https://maps.google.com/maps?q=Hernandarias+1300&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Mapa de Sucursal: Hernandarias 1300">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+    
+  </div>
+</section>
+<!-- End Sucursales Section -->
+
+{% endblock %}

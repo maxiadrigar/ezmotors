@@ -1,0 +1,157 @@
+{% extends "vehicles/base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+  <div class="heading">
+    <div class="container">
+      <div class="row d-flex justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1>{{ vehicle.brand.name }} {{ vehicle.version }}</h1>
+          <a href="{% url 'vehicles:vehicle_list' %}" class="btn btn-info text-white fw-bold px-4 py-2 shadow-sm hover-cta">VOLVER AL LISTADO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="breadcrumbs bg-gray-900">
+    <div class="container">
+      <ol>
+        <li class=" text-info"><a href="{% url 'vehicles:home' %}">Home</a></li>
+        <li class="current text-gray-200">{{ vehicle.brand.name }} {{ vehicle.version }}</li>
+      </ol>
+    </div>
+  </nav>
+</div>
+<!-- End Page Title -->
+
+<!-- Gallery Details Section -->
+<section id="gallery-details" class="gallery-details section">
+
+  <div class="container" data-aos="fade-up">
+
+    <!-- Carrusel Swiper -->
+    <div class="portfolio-details-slider swiper init-swiper">
+    <script type="application/json" class="swiper-config">
+        {
+        "loop": true,
+        "speed": 600,
+        "autoplay": {
+            "delay": 5000
+        },
+        "slidesPerView": "auto",
+        "navigation": {
+            "nextEl": ".swiper-button-next",
+            "prevEl": ".swiper-button-prev"
+        },
+        "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+        }
+        }
+    </script>
+    <div class="swiper-wrapper align-items-center">
+        <!-- Imagen principal -->
+        {% if vehicle.image %}
+        <div class="swiper-slide">
+        <img src="{{ vehicle.image.url }}" alt="" class="carousel-image">
+        </div>
+        {% endif %}
+        <!-- Imágenes adicionales -->
+        {% for img in vehicle.images.all %}
+        <div class="swiper-slide">
+        <img src="{{ img.image.url }}" alt="" class="carousel-image">
+        </div>
+    {% endfor %}
+    </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- Fin Carrusel -->
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section">
+
+      <!-- Section Title -->
+      <div class="container section-title border-bottom border-info-subtles" data-aos="fade-up">
+        <h2 class=" text-info">Precios</h2>
+        <p class="text-white">Detalles del vehiculo</p>
+      </div><!-- End Section Title -->
+
+      <div class="container mt-5" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 gx-lg-5">
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Marca</h3>
+              <h4 class=" text-info">{{ vehicle.brand.name }}</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Precio</h3>
+              <h4 class=" text-info">${{ vehicle.price }}</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Versión</h3>
+              <h4 class=" text-info">
+              {% if vehicle.version %}
+                {{ vehicle.version }}
+              {% else %}
+                -
+              {% endif %}
+              </h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Kilómetros</h3>
+               <h4 class=" text-info">{{ vehicle.kilometers|intcomma }} km</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Año</h3>
+              <h4 class=" text-info">{{ vehicle.year }}</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Pricing Section -->
+    <!-- /Pricing Section -->
+
+    <!-- Descripción -->
+    <div class="row gy-4 mt-4">
+
+      <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="portfolio-info">
+          <h3>Información Adicional</h3>
+          <ul>
+            <li><strong>Tipo</strong> {{ vehicle.vehicle_type.name }}</li>
+            <li><strong>Marca</strong> {{ vehicle.brand.name }}</li>
+            <li><strong>Modelo</strong> {{ vehicle.year }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- /Gallery Details Section -->
+
+{% endblock %}
