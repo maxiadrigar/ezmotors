@@ -158,8 +158,8 @@ STATICFILES_DIRS = [
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME', default=None),
-    'API_KEY': config('CLOUDINARY_API_KEY', default=None),
-    'API_SECRET': config('CLOUDINARY_API_SECRET', default=None),
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
     'SECURE': True,
 }
