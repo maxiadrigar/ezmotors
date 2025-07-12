@@ -154,4 +154,22 @@
 </section>
 <!-- /Gallery Details Section -->
 
+<h2>TEST DE URL DE IMAGEN PRINCIPAL</h2>
+
+{% if vehicle.image %}
+  <p><strong>Raw URL:</strong> {{ vehicle.image.url }}</p>
+  <img src="{{ vehicle.image.url }}" alt="Imagen de prueba" width="300">
+{% else %}
+  <p>No hay imagen principal disponible.</p>
+{% endif %}
+
+<h2>TEST DE IMÁGENES SECUNDARIAS</h2>
+
+{% for img in vehicle.images.all %}
+  <p><strong>Raw URL:</strong> {{ img.image.url }}</p>
+  <img src="{{ img.image.url }}" alt="Secundaria" width="300">
+{% empty %}
+  <p>No hay imágenes secundarias.</p>
+{% endfor %}
+
 {% endblock %}
