@@ -25,5 +25,5 @@ urlpatterns = [
 ]
 
 # SOLO PARA DEBUG O PLANES PAGOS EN RENDER
-if settings.DEBUG or settings.MEDIA_URL:
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
