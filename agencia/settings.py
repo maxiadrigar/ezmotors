@@ -23,10 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
-    # Terceros
-    'cloudinary',
-    'cloudinary_storage',
-
     # Propias
     'vehicles',
 ]
@@ -94,15 +90,10 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# CLOUDINARY CONFIG
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET'),
-    'SECURE': True,
-}
 
 # PRIMARY KEY
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Media (para archivos subidos como imágenes)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

@@ -22,7 +22,7 @@ class Vehicle(models.Model):
     kilometers = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=12, decimal_places=2)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='vehicles/', null=True)
+    image = models.ImageField(upload_to='vehicles/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.brand.name} {self.version or ''} {self.year}, {self.kilometers}km, ${self.price}"

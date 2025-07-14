@@ -1,7 +1,7 @@
 from django.contrib import admin
-from. models import *
+from .models import VehicleType, Brand, Vehicle, VehicleImage
 
-# Register your models here.
+# Inline para imágenes secundarias (en el mismo formulario del vehículo)
 class VehicleImageInline(admin.TabularInline):
     model = VehicleImage
     extra = 1  # muestra un formulario vacío para agregar más fotos
@@ -23,7 +23,16 @@ class VehicleAdmin(admin.ModelAdmin):
     search_fields = ('version', 'brand__name')
     inlines = [VehicleImageInline]
 
-# Si quieres, puedes registrar VehicleImage para verlo como lista aparte:
+    fieldsets = (
+        (None, {
+            'fields': ('brand', 'vehicle_type', 'version', 'year', 'kilometers', 'price', 'description')
+        }),
+        ('Imagen principal', {
+            'fields': ('image',),
+            'description': 'Seleccioná una imagen desde tu computadora. Se subirá y servirá desde tu servidor en Render.'
+        }),
+    )
+
 @admin.register(VehicleImage)
 class VehicleImageAdmin(admin.ModelAdmin):
     list_display = ('vehicle', 'image')

@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('vehicles.urls')),  # <-- esto conecta tu app
 ]
 
-if settings.DEBUG:
+# SOLO PARA DEBUG O PLANES PAGOS EN RENDER
+if settings.DEBUG or settings.MEDIA_URL:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
